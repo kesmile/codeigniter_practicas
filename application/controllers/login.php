@@ -50,9 +50,12 @@ class Login extends CI_Controller {
 	}
 	public function test()
 	{
-		$usuario = $this->login_model->getUsers();
-		//var_dump($usuario);
-		echo json_encode($usuario);
+		$this->load->view('login/test');
+	}
+	public function ajax()
+	{
+		$data['usuarios'] = $this->login_model->getUsers();
+		$this->load->view('login/ajax',$data);
 	}
 }
 
