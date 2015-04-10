@@ -8,9 +8,9 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 	    parent::__construct();
-	    //$this->load->model('usermanager');
+	    $this->load->model('login_model');
 	    $this->load->helper('url');
-	    //$this->load->database('default');
+	    $this->load->database('default');
 	    $this->load->library( 'session' );
 	    $this->load->library( 'MY_Session' );
 	    $this->load->library( 'encrypt' );
@@ -47,6 +47,12 @@ class Login extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		redirect('login');
+	}
+	public function test()
+	{
+		$usuario = $this->login_model->getUsers();
+		//var_dump($usuario);
+		echo json_encode($usuario);
 	}
 }
 
